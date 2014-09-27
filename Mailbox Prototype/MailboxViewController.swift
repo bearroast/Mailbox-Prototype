@@ -51,7 +51,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 
             // List
             } else if translation.x < -50 {
-                messageIconView.backgroundColor = UIColor.purpleColor()
+                messageIconView.backgroundColor = UIColor.yellowColor()
                 
             // List (not active)
             } else if translation.x < 0 {
@@ -71,11 +71,29 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
-                if translation.x > 0 {
+                
+                // Later
+                if translation.x < -200 {
                     self.messageView.center.x = 160
+                    
+                // List
+                } else if translation.x < -50 {
+                    self.messageView.center.x = 160
+                
+                // Reset
+                } else if translation.x < -49 && translation.x < 50 {
+                    self.messageView.center.x = 160
+                
+                // Archive
+                } else if translation.x < 200 {
+                    self.messageView.center.x = 160
+                    
+                // Trash
                 } else {
                     self.messageView.center.x = 160
+                
                 }
+                
             })
 
         }
