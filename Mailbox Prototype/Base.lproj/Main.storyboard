@@ -31,21 +31,25 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="ttt-kN-yaZ">
-                                        <rect key="frame" x="0.0" y="79" width="320" height="425"/>
+                                    <view contentMode="scaleToFill" id="iZZ-Wm-agQ">
+                                        <rect key="frame" x="0.0" y="79" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed" id="2Xa-ie-66G">
-                                                <rect key="frame" x="0.0" y="86" width="320" height="354"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" id="vID-p9-xuC">
+                                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" id="vID-p9-xuC">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="qWI-yH-meC" appends="YES" id="Cge-gU-KEP"/>
+                                                </connections>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed" id="2Xa-ie-66G">
+                                        <rect key="frame" x="0.0" y="165" width="320" height="339"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav" id="c2o-KD-IaT">
@@ -64,6 +68,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="qWI-yH-meC">
+                    <connections>
+                        <action selector="onPanMessage:" destination="vXZ-lx-hvc" id="hwo-Yq-j34"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="352"/>
         </scene>
