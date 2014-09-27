@@ -33,6 +33,23 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.contentSize = CGSize(width: 320, height: 1380)
         scrollView.delegate = self
+        
+        var iconSize = CGRect(x: 0, y: 0, width: 25, height: 25)
+        var archiveIcon = UIImageView(frame: iconSize)
+        var trashIcon = UIImageView(frame: iconSize)
+        var listIcon = UIImageView(frame: iconSize)
+        var laterIcon = UIImageView(frame: iconSize)
+
+        
+        archiveIcon.image = UIImage(named: "archive_icon")
+        trashIcon.image = UIImage(named: "delete_icon")
+        listIcon.image = UIImage(named: "list_icon")
+        laterIcon.image = UIImage(named: "later_icon")
+
+        
+        
+       // messageIconView.addSubview(archiveIcon)
+        
     }
 
     override func didReceiveMemoryWarning() {
