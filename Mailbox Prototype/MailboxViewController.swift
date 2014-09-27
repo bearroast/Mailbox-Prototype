@@ -9,7 +9,7 @@
 import UIKit
 
 class MailboxViewController: UIViewController, UIScrollViewDelegate {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchView: UIImageView!
     @IBOutlet weak var helpView: UIImageView!
@@ -34,63 +34,77 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: 320, height: 1380)
         scrollView.delegate = self
         
-        var iconSize = CGRect(x: 0, y: 0, width: 25, height: 25)
-        var archiveIcon = UIImageView(frame: iconSize)
-        var trashIcon = UIImageView(frame: iconSize)
-        var listIcon = UIImageView(frame: iconSize)
-        var laterIcon = UIImageView(frame: iconSize)
-
-        
-        archiveIcon.image = UIImage(named: "archive_icon")
-        trashIcon.image = UIImage(named: "delete_icon")
-        listIcon.image = UIImage(named: "list_icon")
-        laterIcon.image = UIImage(named: "later_icon")
-
-        
-        
-       // messageIconView.addSubview(archiveIcon)
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     @IBAction func onPanMessage(gestureRecognizer: UIPanGestureRecognizer) {
         
         var location = gestureRecognizer.locationInView(view)
         var translation = gestureRecognizer.translationInView(view)
         var velocity = gestureRecognizer.translationInView(view)
         
+        
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
             messageCenter = messageView.center
             
+            
+            
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
-            println("Translation: \(translation)")
+            //println("Translation: \(translation)")
+            
+            var iconSize = CGRect(x: 0, y: 30, width: 25, height: 25)
+            var archiveIcon = UIImageView(frame: iconSize)
+            var trashIcon = UIImageView(frame: iconSize)
+            var listIcon = UIImageView(frame: iconSize)
+            var laterIcon = UIImageView(frame: iconSize)
+            
+            
+            archiveIcon.image = UIImage(named: "archive_icon")
+            trashIcon.image = UIImage(named: "delete_icon")
+            listIcon.image = UIImage(named: "list_icon")
+            laterIcon.image = UIImage(named: "later_icon")
+            
+            messageIconView.addSubview(archiveIcon)
+            messageIconView.addSubview(trashIcon)
+            messageIconView.addSubview(listIcon)
+            messageIconView.addSubview(laterIcon)
+            
+            archiveIcon.alpha = 0
+            trashIcon.alpha = 0
+            listIcon.alpha = 0
+            laterIcon.alpha = 0
+            
             
             // Later
             if translation.x < -200 {
                 messageIconView.backgroundColor = brown
                 
-            // List
+                // List
             } else if translation.x < -50 {
                 messageIconView.backgroundColor = yellow
+                listIcon.alpha = 1
+                listIcon.frame.offset(dx: messageView.center.x + 20, dy: 0)
                 
-            // List (not active)
+                // List (not active)
             } else if translation.x < 0 {
                 messageIconView.backgroundColor = gray
                 
-            // Archive (not active)
+                // Archive (not active)
             } else if translation.x < 50 {
                 messageIconView.backgroundColor = gray
                 
-            // Archive
+                // Archive
             } else if translation.x < 200 {
                 messageIconView.backgroundColor = green
+                archiveIcon.alpha = 1
+                archiveIcon.center.x = translation.x - 20
                 
-            // Trash
+                // Trash
             } else {
                 messageIconView.backgroundColor = red
             }
@@ -101,26 +115,26 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 if translation.x < -200 {
                     self.messageView.center.x = 160
                     
-                // List
+                    // List
                 } else if translation.x < -50 {
                     self.messageView.center.x = 160
-                
-                // Reset
+                    
+                    // Reset
                 } else if translation.x < -49 && translation.x < 50 {
                     self.messageView.center.x = 160
-                
-                // Archive
+                    
+                    // Archive
                 } else if translation.x < 200 {
                     self.messageView.center.x = 160
                     
-                // Trash
+                    // Trash
                 } else {
                     self.messageView.center.x = 160
-                
+                    
                 }
                 
             })
-
+            
         }
         
     }
