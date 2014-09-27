@@ -19,6 +19,15 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     
     var messageCenter: CGPoint!
     
+    
+    
+    let yellow = UIColor(red: 1, green: 0.83, blue: 0.13, alpha: 1)
+    let brown = UIColor(red: 0.85, green: 0.65, blue: 0.46, alpha: 1)
+    let green = UIColor(red: 0.38, green: 0.85, blue: 0.38, alpha: 1)
+    let red = UIColor(red: 0.94, green: 0.33, blue: 0.05, alpha: 1)
+    let gray = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +48,6 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
             messageCenter = messageView.center
-            println("panning began")
             
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
@@ -47,27 +55,27 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             
             // Later
             if translation.x < -200 {
-                messageIconView.backgroundColor = UIColor.brownColor()
+                messageIconView.backgroundColor = brown
                 
             // List
             } else if translation.x < -50 {
-                messageIconView.backgroundColor = UIColor.yellowColor()
+                messageIconView.backgroundColor = yellow
                 
             // List (not active)
             } else if translation.x < 0 {
-                messageIconView.backgroundColor = UIColor.grayColor()
+                messageIconView.backgroundColor = gray
                 
             // Archive (not active)
             } else if translation.x < 50 {
-                messageIconView.backgroundColor = UIColor.grayColor()
+                messageIconView.backgroundColor = gray
                 
             // Archive
             } else if translation.x < 200 {
-                messageIconView.backgroundColor = UIColor.greenColor()
+                messageIconView.backgroundColor = green
                 
             // Trash
             } else {
-                messageIconView.backgroundColor = UIColor.redColor()
+                messageIconView.backgroundColor = red
             }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
