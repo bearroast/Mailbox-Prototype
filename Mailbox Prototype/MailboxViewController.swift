@@ -15,6 +15,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var helpView: UIImageView!
     @IBOutlet weak var feedView: UIImageView!
     @IBOutlet weak var messageView: UIImageView!
+    @IBOutlet weak var messageIconView: UIView!
     
     var messageCenter: CGPoint!
     
@@ -36,18 +37,47 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         var velocity = gestureRecognizer.translationInView(view)
         
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
-            messageCenter = messageView.center
             
+            messageCenter = messageView.center
             println("panning began")
+            
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
             println("Translation: \(translation)")
+            
+            // Later
+            if translation.x < -200 {
+                messageIconView.backgroundColor = UIColor.brownColor()
+                
+            // List
+            } else if translation.x < -50 {
+                messageIconView.backgroundColor = UIColor.purpleColor()
+                
+            // List (not active)
+            } else if translation.x < 0 {
+                messageIconView.backgroundColor = UIColor.grayColor()
+                
+            // Archive (not active)
+            } else if translation.x < 50 {
+                messageIconView.backgroundColor = UIColor.grayColor()
+                
+            // Archive
+            } else if translation.x < 200 {
+                messageIconView.backgroundColor = UIColor.greenColor()
+                
+            // Trash
+            } else {
+                messageIconView.backgroundColor = UIColor.redColor()
+            }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
-//            if velocity.x < 150 {
-//                self.messageView.center.x = 320
-//            } else {
-//                self.messageView.center.x = -160
-//            }
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                if translation.x > 0 {
+                    self.messageView.center.x = 160
+                } else {
+                    self.messageView.center.x = 160
+                }
+            })
+
         }
         
     }
