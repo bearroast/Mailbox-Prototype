@@ -13,6 +13,7 @@
 		401557A719D7086E00234185 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401557A619D7086E00234185 /* Images.xcassets */; };
 		401557AA19D7086E00234185 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 401557A819D7086E00234185 /* LaunchScreen.xib */; };
 		401557B619D7086F00234185 /* Mailbox_PrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401557B519D7086F00234185 /* Mailbox_PrototypeTests.swift */; };
+		401557C019D70DC700234185 /* MailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401557BF19D70DC700234185 /* MailboxViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		401557AF19D7086F00234185 /* Mailbox PrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mailbox PrototypeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		401557B419D7086F00234185 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		401557B519D7086F00234185 /* Mailbox_PrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailbox_PrototypeTests.swift; sourceTree = "<group>"; };
+		401557BF19D70DC700234185 /* MailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				4015579F19D7086E00234185 /* AppDelegate.swift */,
 				401557A119D7086E00234185 /* ViewController.swift */,
 				401557A319D7086E00234185 /* Main.storyboard */,
+				401557BF19D70DC700234185 /* MailboxViewController.swift */,
 				401557A619D7086E00234185 /* Images.xcassets */,
 				401557A819D7086E00234185 /* LaunchScreen.xib */,
 				4015579D19D7086E00234185 /* Supporting Files */,
@@ -214,6 +217,7 @@
 			files = (
 				401557A219D7086E00234185 /* ViewController.swift in Sources */,
 				401557A019D7086E00234185 /* AppDelegate.swift in Sources */,
+				401557C019D70DC700234185 /* MailboxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
