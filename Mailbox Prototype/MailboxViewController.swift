@@ -28,7 +28,6 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     var messageCenter: CGPoint!
     
     
-    
     let yellow = UIColor(red: 1, green: 0.83, blue: 0.13, alpha: 1)
     let brown = UIColor(red: 0.85, green: 0.65, blue: 0.46, alpha: 1)
     let green = UIColor(red: 0.38, green: 0.85, blue: 0.38, alpha: 1)
@@ -39,11 +38,13 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.contentSize = CGSize(width: 320, height: 1380)
+        scrollView.contentSize = CGSize(width: 320, height: searchView.image!.size.height + helpView.image!.size.height + messageView.image!.size.height + feedView.image!.size.height)
         scrollView.delegate = self
         
         laterView.alpha = 0
         listView.alpha = 0
+        
+        println(feedView.center.y)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,8 +62,6 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             
             messageCenter = messageView.center
             
-            
-            
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
             
@@ -73,13 +72,13 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             
             
             // Later
-            if translation.x < -200 {
+            if translation.x < -260 {
                 messageIconView.backgroundColor = brown
                 laterIcon.alpha = 1
                 laterIcon.center.x = translation.x + 350
                 
             // List
-            } else if translation.x < -50 {
+            } else if translation.x < -60 {
                 messageIconView.backgroundColor = yellow
                 listIcon.alpha = 1
                 listIcon.center.x = translation.x + 350
@@ -91,14 +90,14 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 listIcon.center.x = 300
                 
             // Archive (not active)
-            } else if translation.x < 50 {
+            } else if translation.x < 60 {
                 messageIconView.backgroundColor = gray
                 archiveIcon.alpha = 1
                 archiveIcon.center.x = 20
                 
                 
             // Archive
-            } else if translation.x < 200 {
+            } else if translation.x < 260 {
                 messageIconView.backgroundColor = green
                 archiveIcon.alpha = 1
                 archiveIcon.center.x = translation.x - 30
@@ -113,24 +112,28 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
                 
                 // Later
-                if translation.x < -200 {
+                if translation.x < -260 {
                     self.messageView.center.x = 160
                     
                 // List
-                } else if translation.x < -50 {
+                } else if translation.x < -60 {
                     self.messageView.center.x = 160
                     
-                    // Reset
-                } else if translation.x < -49 && translation.x < 50 {
+                // Reset
+                } else if translation.x < -60 && translation.x < 60 {
                     self.messageView.center.x = 160
                     
-                    // Archive
-                } else if translation.x < 200 {
+                // Archive
+                } else if translation.x < 260 {
                     self.messageView.center.x = 160
+                    self.feedView.center.y -= self.messageView.image!.size.height
+                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
                     
-                    // Trash
+                // Trash
                 } else {
                     self.messageView.center.x = 160
+                    self.feedView.center.y -= self.messageView.image!.size.height
+                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
                     
                 }
                 
