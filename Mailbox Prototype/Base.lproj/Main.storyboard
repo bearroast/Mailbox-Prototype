@@ -35,6 +35,22 @@
                                         <rect key="frame" x="0.0" y="79" width="320" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archive_icon" id="IS7-qr-xag">
+                                                <rect key="frame" x="0.0" y="32" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete_icon" id="HvC-Dj-GhZ">
+                                                <rect key="frame" x="0.0" y="32" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="later_icon" id="d4h-lM-NuA">
+                                                <rect key="frame" x="0.0" y="32" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_icon" id="xwc-AL-PNm">
+                                                <rect key="frame" x="0.0" y="32" width="25" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" id="vID-p9-xuC">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,8 +85,12 @@
                         <color key="tintColor" red="0.31764705882352939" green="0.72549019607843135" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
+                        <outlet property="archiveIcon" destination="IS7-qr-xag" id="GWo-uU-UrY"/>
+                        <outlet property="deleteIcon" destination="HvC-Dj-GhZ" id="n4h-go-aQM"/>
                         <outlet property="feedView" destination="2Xa-ie-66G" id="2a4-Gz-RiB"/>
                         <outlet property="helpView" destination="pop-vI-53q" id="nvD-Tp-kqg"/>
+                        <outlet property="laterIcon" destination="d4h-lM-NuA" id="ej0-X3-bRJ"/>
+                        <outlet property="listIcon" destination="xwc-AL-PNm" id="it9-2S-VVi"/>
                         <outlet property="messageIconView" destination="iZZ-Wm-agQ" id="szc-zC-LCQ"/>
                         <outlet property="messageView" destination="vID-p9-xuC" id="UJp-HC-KYq"/>
                         <outlet property="scrollView" destination="Qw4-AX-sA2" id="c1Y-sr-skd"/>
@@ -88,10 +108,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="archive_icon" width="25" height="25"/>
         <image name="archive_nav_icon" width="25" height="20"/>
+        <image name="delete_icon" width="25" height="25"/>
         <image name="feed" width="320" height="1202"/>
         <image name="help_label" width="320" height="37"/>
+        <image name="later_icon" width="25" height="25"/>
         <image name="later_nav_icon" width="25" height="20"/>
+        <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>

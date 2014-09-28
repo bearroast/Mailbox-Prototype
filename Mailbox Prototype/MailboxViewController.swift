@@ -17,6 +17,13 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var messageView: UIImageView!
     @IBOutlet weak var messageIconView: UIView!
     
+    @IBOutlet weak var archiveIcon: UIImageView!
+    @IBOutlet weak var deleteIcon: UIImageView!
+    @IBOutlet weak var laterIcon: UIImageView!
+    @IBOutlet weak var listIcon: UIImageView!
+    
+    
+    
     var messageCenter: CGPoint!
     
     
@@ -55,27 +62,9 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
-            //println("Translation: \(translation)")
-            
-            var iconSize = CGRect(x: 0, y: 30, width: 25, height: 25)
-            var archiveIcon = UIImageView(frame: iconSize)
-            var trashIcon = UIImageView(frame: iconSize)
-            var listIcon = UIImageView(frame: iconSize)
-            var laterIcon = UIImageView(frame: iconSize)
-            
-            
-            archiveIcon.image = UIImage(named: "archive_icon")
-            trashIcon.image = UIImage(named: "delete_icon")
-            listIcon.image = UIImage(named: "list_icon")
-            laterIcon.image = UIImage(named: "later_icon")
-            
-            messageIconView.addSubview(archiveIcon)
-            messageIconView.addSubview(trashIcon)
-            messageIconView.addSubview(listIcon)
-            messageIconView.addSubview(laterIcon)
             
             archiveIcon.alpha = 0
-            trashIcon.alpha = 0
+            deleteIcon.alpha = 0
             listIcon.alpha = 0
             laterIcon.alpha = 0
             
@@ -83,30 +72,39 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             // Later
             if translation.x < -200 {
                 messageIconView.backgroundColor = brown
+                laterIcon.alpha = 1
+                laterIcon.center.x = translation.x + 350
                 
-                // List
+            // List
             } else if translation.x < -50 {
                 messageIconView.backgroundColor = yellow
                 listIcon.alpha = 1
-                listIcon.frame.offset(dx: messageView.center.x + 20, dy: 0)
+                listIcon.center.x = translation.x + 350
                 
-                // List (not active)
+            // List (not active)
             } else if translation.x < 0 {
                 messageIconView.backgroundColor = gray
+                listIcon.alpha = 1
+                listIcon.center.x = 300
                 
-                // Archive (not active)
+            // Archive (not active)
             } else if translation.x < 50 {
                 messageIconView.backgroundColor = gray
+                archiveIcon.alpha = 1
+                archiveIcon.center.x = 20
                 
-                // Archive
+                
+            // Archive
             } else if translation.x < 200 {
                 messageIconView.backgroundColor = green
                 archiveIcon.alpha = 1
-                archiveIcon.center.x = translation.x - 20
+                archiveIcon.center.x = translation.x - 30
                 
-                // Trash
+            // Trash
             } else {
                 messageIconView.backgroundColor = red
+                deleteIcon.alpha = 1
+                deleteIcon.center.x = translation.x - 30
             }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -115,7 +113,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 if translation.x < -200 {
                     self.messageView.center.x = 160
                     
-                    // List
+                // List
                 } else if translation.x < -50 {
                     self.messageView.center.x = 160
                     
