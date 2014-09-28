@@ -80,6 +80,14 @@
                                     <segment title="" image="archive_nav_icon"/>
                                 </segments>
                             </segmentedControl>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.31764705882352939" green="0.72549019607843135" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -90,7 +98,9 @@
                         <outlet property="feedView" destination="2Xa-ie-66G" id="2a4-Gz-RiB"/>
                         <outlet property="helpView" destination="pop-vI-53q" id="nvD-Tp-kqg"/>
                         <outlet property="laterIcon" destination="d4h-lM-NuA" id="ej0-X3-bRJ"/>
+                        <outlet property="laterView" destination="yzH-Ba-dec" id="NcW-GC-SOq"/>
                         <outlet property="listIcon" destination="xwc-AL-PNm" id="it9-2S-VVi"/>
+                        <outlet property="listView" destination="VVc-Di-qoY" id="cBY-gL-T66"/>
                         <outlet property="messageIconView" destination="iZZ-Wm-agQ" id="szc-zC-LCQ"/>
                         <outlet property="messageView" destination="vID-p9-xuC" id="UJp-HC-KYq"/>
                         <outlet property="scrollView" destination="Qw4-AX-sA2" id="c1Y-sr-skd"/>
@@ -115,10 +125,12 @@
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
         <image name="later_nav_icon" width="25" height="20"/>
+        <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
+        <image name="reschedule" width="320" height="568"/>
         <image name="search" width="320" height="42"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

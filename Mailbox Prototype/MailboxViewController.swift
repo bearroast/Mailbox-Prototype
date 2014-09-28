@@ -22,7 +22,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var laterIcon: UIImageView!
     @IBOutlet weak var listIcon: UIImageView!
     
-    
+    @IBOutlet weak var laterView: UIImageView!
+    @IBOutlet weak var listView: UIImageView!
     
     var messageCenter: CGPoint!
     
@@ -41,6 +42,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: 320, height: 1380)
         scrollView.delegate = self
         
+        laterView.alpha = 0
+        listView.alpha = 0
     }
     
     override func didReceiveMemoryWarning() {
