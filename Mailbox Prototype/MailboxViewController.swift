@@ -29,7 +29,10 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var navigationBar: UIView!
     @IBOutlet weak var menuView: UIImageView!
     
+    @IBOutlet weak var contentView: UIView!
+    
     var messageCenter: CGPoint!
+    var contentCenter: CGPoint!
     
     
     let yellow = UIColor(red: 1, green: 0.83, blue: 0.13, alpha: 1)
@@ -54,6 +57,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         laterView.alpha = 0
         listView.alpha = 0
         
+        println("Manu alpha is \(menuView.alpha)")
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,6 +66,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @IBAction func onTapHamburger(sender: UIButton) {
+        println("Manu alpha is \(menuView.alpha)")
         menuView.alpha = 1
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             self.scrollView.transform = CGAffineTransformMakeTranslation(280, 0)
@@ -110,6 +116,24 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             }, completion: nil)
     }
     
+    @IBAction func onEdgePan(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        menuView.alpha = 1
+        
+        var location = gestureRecognizer.locationInView(contentView)
+        var translation = gestureRecognizer.translationInView(contentView)
+        var velocity = gestureRecognizer.translationInView(contentView)
+        
+        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            contentCenter = contentView.center
+            println("panning from edge")     // ugh not working
+
+        } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
+            println("panning changed")
+        } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+            
+        }
+    }
     
     @IBAction func onPanMessage(gestureRecognizer: UIPanGestureRecognizer) {
         
@@ -121,6 +145,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             
             messageCenter = messageView.center
+            
+            
             
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             messageView.center.x = translation.x + messageCenter.x
