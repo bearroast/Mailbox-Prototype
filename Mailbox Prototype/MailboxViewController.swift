@@ -33,7 +33,13 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     let green = UIColor(red: 0.38, green: 0.85, blue: 0.38, alpha: 1)
     let red = UIColor(red: 0.94, green: 0.33, blue: 0.05, alpha: 1)
     let gray = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
-    
+   
+    // Converts values (copypasta from Dropbox)
+    func convertValue(value: Float, r1Min: Float, r1Max: Float, r2Min: Float, r2Max: Float) -> Float {
+        var ratio = (r2Max - r2Min) / (r1Max - r1Min)
+        return value * ratio + r2Min - r1Min * ratio
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,13 +132,15 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             // Later (not active)
             } else if (translation.x < 0 && translation.x > -60) {
                 messageIconView.backgroundColor = gray
-                listIcon.alpha = 1
+                var listIconAlpha = convertValue(Float(translation.x), r1Min: 0, r1Max: -60, r2Min: 0, r2Max: 1)
+                listIcon.alpha = CGFloat(listIconAlpha)
                 listIcon.center.x = 290
                 
             // Archive (not active)
             } else if (translation.x > 0 &&  translation.x < 60) {
                 messageIconView.backgroundColor = gray
-                archiveIcon.alpha = 1
+                var archiveIconAlpha = convertValue(Float(translation.x), r1Min: 0, r1Max: 60, r2Min: 0, r2Max: 1)
+                archiveIcon.alpha = CGFloat(archiveIconAlpha)
                 archiveIcon.center.x = 30
                 
                 
