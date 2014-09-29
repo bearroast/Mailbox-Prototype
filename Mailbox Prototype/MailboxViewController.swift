@@ -25,6 +25,10 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var laterView: UIImageView!
     @IBOutlet weak var listView: UIImageView!
     
+
+    @IBOutlet weak var navigationBar: UIView!
+    @IBOutlet weak var menuView: UIImageView!
+    
     var messageCenter: CGPoint!
     
     
@@ -55,6 +59,16 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @IBAction func onTapHamburger(sender: UIButton) {
+        menuView.alpha = 1
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.scrollView.transform = CGAffineTransformMakeTranslation(280, 0)
+            self.navigationBar.transform = CGAffineTransformMakeTranslation(280, 0)
+        })
+    }
+    
+    
     
     @IBAction func onTapListView(sender: UITapGestureRecognizer) {
         println("tap")

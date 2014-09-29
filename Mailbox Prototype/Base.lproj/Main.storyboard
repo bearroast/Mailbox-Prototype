@@ -12,6 +12,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="v1l-gh-klK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="538"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Qw4-AX-sA2">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,20 +71,37 @@
                                     </imageView>
                                 </subviews>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav" id="c2o-KD-IaT">
+                            <view contentMode="scaleToFill" id="RYB-RW-xUf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="DYM-OL-Nky">
-                                <rect key="frame" x="88" y="28" width="144" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="" image="later_nav_icon"/>
-                                    <segment title="" image="mail_nav_icon"/>
-                                    <segment title="" image="archive_nav_icon"/>
-                                </segments>
-                            </segmentedControl>
-                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav" id="c2o-KD-IaT">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3mn-I7-5Yj">
+                                        <rect key="frame" x="0.0" y="24" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onTapHamburger:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cu3-dI-ftK"/>
+                                        </connections>
+                                    </button>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="DYM-OL-Nky">
+                                        <rect key="frame" x="88" y="28" width="144" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="" image="later_nav_icon"/>
+                                            <segment title="" image="mail_nav_icon"/>
+                                            <segment title="" image="archive_nav_icon"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -88,7 +109,7 @@
                                     <outletCollection property="gestureRecognizers" destination="1zP-GU-w3e" appends="YES" id="xHW-f9-gT3"/>
                                 </connections>
                             </imageView>
-                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
+                            <imageView alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -109,8 +130,10 @@
                         <outlet property="laterView" destination="yzH-Ba-dec" id="NcW-GC-SOq"/>
                         <outlet property="listIcon" destination="xwc-AL-PNm" id="it9-2S-VVi"/>
                         <outlet property="listView" destination="VVc-Di-qoY" id="cBY-gL-T66"/>
+                        <outlet property="menuView" destination="v1l-gh-klK" id="0EO-8D-mMP"/>
                         <outlet property="messageIconView" destination="iZZ-Wm-agQ" id="szc-zC-LCQ"/>
                         <outlet property="messageView" destination="vID-p9-xuC" id="UJp-HC-KYq"/>
+                        <outlet property="navigationBar" destination="RYB-RW-xUf" id="E4U-nJ-R1D"/>
                         <outlet property="scrollView" destination="Qw4-AX-sA2" id="c1Y-sr-skd"/>
                         <outlet property="searchView" destination="YJK-vF-9dA" id="qb8-Ky-gR1"/>
                     </connections>
@@ -134,6 +157,19 @@
             </objects>
             <point key="canvasLocation" x="162" y="352"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="e0l-yq-UVN">
+            <objects>
+                <viewController id="zeK-62-eE6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kx3-Rh-tI4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDY-dg-cS9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="archive_icon" width="25" height="25"/>
@@ -146,6 +182,7 @@
         <image name="list" width="320" height="568"/>
         <image name="list_icon" width="25" height="25"/>
         <image name="mail_nav_icon" width="25" height="20"/>
+        <image name="menu" width="320" height="568"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
         <image name="reschedule" width="320" height="568"/>
