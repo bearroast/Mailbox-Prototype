@@ -110,29 +110,35 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
                 
-            // Later
+            // List (brown)
             if translation.x < -260 {
-                self.messageView.center.x = 160
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    self.messageView.center.x = -480
+                    }, completion: nil)
                 
-            // List
+            // Later (yellow)
             } else if translation.x < -60 {
-                self.messageView.center.x = 160
-                
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    self.messageView.center.x = -480
+                    }, completion: nil)
             // Reset
             } else if translation.x < -60 && translation.x < 60 {
-                self.messageView.center.x = 160
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    self.messageView.center.x = 160
+                    }, completion: nil)
                 
             // Archive
             } else if translation.x < 260 {
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
-                    self.messageView.center.x = 160
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    self.messageView.center.x = 480
                 }, completion: nil)
                 
                 
             // Trash
             } else {
-                self.messageView.center.x = 160
-                
+                UIView.animateWithDuration(2, animations: { () -> Void in
+                    self.messageView.center.x = 480
+                    }, completion: nil)
             }
             
             
