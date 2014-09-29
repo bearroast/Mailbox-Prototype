@@ -50,10 +50,21 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func onTapListView(sender: UITapGestureRecognizer) {
+        println("tap")
+        UIView.animateWithDuration(0.2, delay: 0.2, options: nil, animations: { () -> Void in
+            self.listView.alpha = 0
+            }, completion: nil)
+        self.updateScrollView()
+        
+    }
     @IBAction func onTapLaterView(sender: UITapGestureRecognizer) {
-        self.laterView.alpha = 0
-        // reduce opacity to zero
-        // animatefeed up
+        println("tap")
+        UIView.animateWithDuration(0.2, delay: 0.2, options: nil, animations: { () -> Void in
+            self.laterView.alpha = 0
+        }, completion: nil)
+        self.updateScrollView()
+
     }
 
     func updateScrollView() {
@@ -61,8 +72,25 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
             self.feedView.center.y -= self.messageView.image!.size.height
         }, completion: nil)
-
     }
+    
+    func swipeLeft() {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+                self.messageView.center.x = -320-180-30-(25/2)
+                self.listIcon.center.x = -320-30
+                self.laterIcon.center.x = -320-30
+            }, completion: nil)
+    }
+    
+    func swipeRight() {
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.messageView.center.x = 320+180+30+(25/2)
+            self.archiveIcon.center.x = 320+30
+            self.deleteIcon.center.x = 320+30
+            }, completion: nil)
+    }
+    
+    
     @IBAction func onPanMessage(gestureRecognizer: UIPanGestureRecognizer) {
         
         var location = gestureRecognizer.locationInView(view)
@@ -81,9 +109,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             deleteIcon.alpha = 0
             listIcon.alpha = 0
             laterIcon.alpha = 0
-            
-            println(scrollView.center.y)
-            
+                        
             
             // List (brown)
             if translation.x < -260 {
@@ -126,18 +152,16 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 
             // List (brown)
             if translation.x < -260 {
+                self.swipeLeft()
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.messageView.center.x = -320-180-30-(25/2)
-                    self.laterIcon.center.x = -320-30
                     self.listView.alpha = 1
                     }, completion: nil)
                 
             // Later (yellow)
             } else if translation.x < -60 && translation.x > -260 {
+                self.swipeLeft()
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.messageView.center.x = -320-180-30-(25/2)
-                    self.listIcon.center.x = -320-30
-                    self.laterView.alpha = 1
+                        self.laterView.alpha = 1
                     }, completion: nil)
                 
             // Reset
@@ -149,8 +173,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             // Archive
             } else if translation.x > 60 && translation.x < 260 {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.messageView.center.x = 320+180+30+(25/2) // with message + move 180 (off the side) + 30 padding from Changed + center of icon
-                    self.archiveIcon.center.x = 320+30 // width of screen + 30 padding
+                    self.swipeRight()
                     self.updateScrollView()
                     
                 }, completion: nil)
@@ -159,8 +182,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             // Trash
             } else if translation.x > 260 {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
-                    self.messageView.center.x = 320+180+30+(25/2)
-                    self.deleteIcon.center.x = 320+30
+                    self.swipeRight()
                     self.updateScrollView()
                     }, completion: nil)
             }

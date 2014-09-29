@@ -80,11 +80,15 @@
                                     <segment title="" image="archive_nav_icon"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
+                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1zP-GU-w3e" appends="YES" id="xHW-f9-gT3"/>
+                                </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
+                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -120,6 +124,11 @@
                 <tapGestureRecognizer id="uCC-b5-IG4">
                     <connections>
                         <action selector="onTapLaterView:" destination="vXZ-lx-hvc" id="N3S-HH-OhY"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="1zP-GU-w3e">
+                    <connections>
+                        <action selector="onTapListView:" destination="vXZ-lx-hvc" id="bIj-UR-Wda"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
