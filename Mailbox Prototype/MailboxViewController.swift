@@ -44,7 +44,6 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         laterView.alpha = 0
         listView.alpha = 0
         
-        println(feedView.center.y)
     }
     
     override func didReceiveMemoryWarning() {
@@ -70,74 +69,72 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             listIcon.alpha = 0
             laterIcon.alpha = 0
             
+            println(translation.x)
             
-            // Later
+            // List (brown)
             if translation.x < -260 {
                 messageIconView.backgroundColor = brown
                 laterIcon.alpha = 1
                 laterIcon.center.x = translation.x + 350
                 
-            // List
+            // Later (yellow)
             } else if translation.x < -60 {
                 messageIconView.backgroundColor = yellow
                 listIcon.alpha = 1
                 listIcon.center.x = translation.x + 350
                 
-            // List (not active)
-            } else if translation.x < 0 {
+            // Later (not active)
+            } else if (translation.x < 0 && translation.x > -60) {
                 messageIconView.backgroundColor = gray
                 listIcon.alpha = 1
-                listIcon.center.x = 300
+                listIcon.center.x = 290
                 
             // Archive (not active)
-            } else if translation.x < 60 {
+            } else if (translation.x > 0 &&  translation.x < 60) {
                 messageIconView.backgroundColor = gray
                 archiveIcon.alpha = 1
-                archiveIcon.center.x = 20
+                archiveIcon.center.x = 30
                 
                 
-            // Archive
-            } else if translation.x < 260 {
+            // Archive (green)
+            } else if (translation.x) < 260 {
                 messageIconView.backgroundColor = green
                 archiveIcon.alpha = 1
                 archiveIcon.center.x = translation.x - 30
                 
-            // Trash
+            // Trash (red)
             } else {
                 messageIconView.backgroundColor = red
                 deleteIcon.alpha = 1
                 deleteIcon.center.x = translation.x - 30
             }
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
-            UIView.animateWithDuration(0.5, animations: { () -> Void in
                 
-                // Later
-                if translation.x < -260 {
-                    self.messageView.center.x = 160
-                    
-                // List
-                } else if translation.x < -60 {
-                    self.messageView.center.x = 160
-                    
-                // Reset
-                } else if translation.x < -60 && translation.x < 60 {
-                    self.messageView.center.x = 160
-                    
-                // Archive
-                } else if translation.x < 260 {
-                    self.messageView.center.x = 160
-                    self.feedView.center.y -= self.messageView.image!.size.height
-                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
-                    
-                // Trash
-                } else {
-                    self.messageView.center.x = 160
-                    self.feedView.center.y -= self.messageView.image!.size.height
-                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
-                    
-                }
+            // Later
+            if translation.x < -260 {
+                self.messageView.center.x = 160
                 
-            })
+            // List
+            } else if translation.x < -60 {
+                self.messageView.center.x = 160
+                
+            // Reset
+            } else if translation.x < -60 && translation.x < 60 {
+                self.messageView.center.x = 160
+                
+            // Archive
+            } else if translation.x < 260 {
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                    self.messageView.center.x = 160
+                }, completion: nil)
+                
+                
+            // Trash
+            } else {
+                self.messageView.center.x = 160
+                
+            }
+            
             
         }
         
