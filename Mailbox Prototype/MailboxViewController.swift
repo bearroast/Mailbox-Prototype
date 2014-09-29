@@ -112,32 +112,37 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 
             // List (brown)
             if translation.x < -260 {
-                UIView.animateWithDuration(2, animations: { () -> Void in
-                    self.messageView.center.x = -480
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.messageView.center.x = -320-180-30-(25/2)
+                    self.laterIcon.center.x = -320-30
                     }, completion: nil)
                 
             // Later (yellow)
-            } else if translation.x < -60 {
-                UIView.animateWithDuration(2, animations: { () -> Void in
-                    self.messageView.center.x = -480
+            } else if translation.x < -60 && translation.x > -260 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.messageView.center.x = -320-180-30-(25/2)
+                    self.listIcon.center.x = -320-30
                     }, completion: nil)
+                
             // Reset
-            } else if translation.x < -60 && translation.x < 60 {
-                UIView.animateWithDuration(2, animations: { () -> Void in
+            } else if translation.x > -60 && translation.x < 60 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.messageView.center.x = 160
                     }, completion: nil)
                 
             // Archive
-            } else if translation.x < 260 {
-                UIView.animateWithDuration(2, animations: { () -> Void in
-                    self.messageView.center.x = 480
+            } else if translation.x > 60 && translation.x < 260 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.messageView.center.x = 320+180+30+(25/2) // with message + move 180 (off the side) + 30 padding from Changed + center of icon
+                    self.archiveIcon.center.x = 320+30 // width of screen + 30 padding
                 }, completion: nil)
                 
                 
             // Trash
-            } else {
-                UIView.animateWithDuration(2, animations: { () -> Void in
-                    self.messageView.center.x = 480
+            } else if translation.x > 260 {
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    self.messageView.center.x = 320+180+30+(25/2)
+                    self.deleteIcon.center.x = 320+30
                     }, completion: nil)
             }
             
