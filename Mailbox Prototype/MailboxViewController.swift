@@ -161,14 +161,14 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             // List (brown)
             if translation.x < -260 {
                 self.swipeLeft()
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
                     self.listView.alpha = 1
                     }, completion: nil)
                 
             // Later (yellow)
             } else if translation.x < -60 && translation.x > -260 {
                 self.swipeLeft()
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
                         self.laterView.alpha = 1
                     }, completion: nil)
                 
