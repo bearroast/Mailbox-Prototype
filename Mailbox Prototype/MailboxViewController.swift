@@ -50,6 +50,13 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func onTapLaterView(sender: UITapGestureRecognizer) {
+        self.laterView.alpha = 0
+        // reduce opacity to zero
+        // animatefeed up
+    }
+
+    
     @IBAction func onPanMessage(gestureRecognizer: UIPanGestureRecognizer) {
         
         var location = gestureRecognizer.locationInView(view)
@@ -116,6 +123,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.messageView.center.x = -320-180-30-(25/2)
                     self.laterIcon.center.x = -320-30
+                    self.listView.alpha = 1
                     }, completion: nil)
                 
             // Later (yellow)
@@ -123,6 +131,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.messageView.center.x = -320-180-30-(25/2)
                     self.listIcon.center.x = -320-30
+                    self.laterView.alpha = 1
                     }, completion: nil)
                 
             // Reset

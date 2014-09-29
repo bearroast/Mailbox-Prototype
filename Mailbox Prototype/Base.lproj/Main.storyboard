@@ -80,13 +80,17 @@
                                     <segment title="" image="archive_nav_icon"/>
                                 </segments>
                             </segmentedControl>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list" id="VVc-Di-qoY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reschedule" id="yzH-Ba-dec">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="uCC-b5-IG4" appends="YES" id="4FD-d7-Cvf"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -113,6 +117,11 @@
                         <action selector="onPanMessage:" destination="vXZ-lx-hvc" id="hwo-Yq-j34"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer id="uCC-b5-IG4">
+                    <connections>
+                        <action selector="onTapLaterView:" destination="vXZ-lx-hvc" id="N3S-HH-OhY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="162" y="352"/>
         </scene>
