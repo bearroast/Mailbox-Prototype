@@ -69,7 +69,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             listIcon.alpha = 0
             laterIcon.alpha = 0
             
-            println(translation.x)
+            println(scrollView.center.y)
+            
             
             // List (brown)
             if translation.x < -260 {
@@ -135,6 +136,9 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.messageView.center.x = 320+180+30+(25/2) // with message + move 180 (off the side) + 30 padding from Changed + center of icon
                     self.archiveIcon.center.x = 320+30 // width of screen + 30 padding
+                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
+                    self.feedView.center.y -= self.messageView.image!.size.height
+                    
                 }, completion: nil)
                 
                 
@@ -143,6 +147,8 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
                     self.messageView.center.x = 320+180+30+(25/2)
                     self.deleteIcon.center.x = 320+30
+                    self.scrollView.contentSize = CGSize(width: 320, height: self.searchView.image!.size.height + self.helpView.image!.size.height + self.feedView.image!.size.height)
+                    self.feedView.center.y -= self.messageView.image!.size.height
                     }, completion: nil)
             }
             
