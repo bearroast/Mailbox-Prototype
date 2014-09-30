@@ -409,6 +409,7 @@
 				401557BB19D7086F00234185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		401557BC19D7086F00234185 /* Build configuration list for PBXNativeTarget "Mailbox PrototypeTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +418,7 @@
 				401557BE19D7086F00234185 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

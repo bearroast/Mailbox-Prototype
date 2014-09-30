@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView alpha="0.0" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="v1l-gh-klK">
+                            <imageView contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" id="v1l-gh-klK">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="538"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -101,6 +101,9 @@
                                                     <segment title="" image="mail_nav_icon"/>
                                                     <segment title="" image="archive_nav_icon"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="onSegmentedController:" destination="vXZ-lx-hvc" eventType="valueChanged" id="nY9-Ay-4RL"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -124,13 +127,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="rF7-sk-zeI" appends="YES" id="jTu-7e-nn2"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.31764705882352939" green="0.72549019607843135" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="JoW-lY-imf" appends="YES" id="CGa-hK-q7C"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="archiveIcon" destination="IS7-qr-xag" id="GWo-uU-UrY"/>
@@ -166,14 +170,14 @@
                         <action selector="onTapListView:" destination="vXZ-lx-hvc" id="bIj-UR-Wda"/>
                     </connections>
                 </tapGestureRecognizer>
-                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="rF7-sk-zeI">
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="JoW-lY-imf">
                     <rectEdge key="edges" left="YES"/>
                     <connections>
-                        <action selector="onEdgePan:" destination="vXZ-lx-hvc" id="pl9-rL-dF5"/>
+                        <action selector="onEdgePanning:" destination="vXZ-lx-hvc" id="lYR-7D-cKZ"/>
                     </connections>
                 </screenEdgePanGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="162" y="352"/>
+            <point key="canvasLocation" x="251" y="330"/>
         </scene>
     </scenes>
     <resources>

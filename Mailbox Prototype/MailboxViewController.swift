@@ -57,20 +57,24 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         laterView.alpha = 0
         listView.alpha = 0
         
-        println("Manu alpha is \(menuView.alpha)")
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    
+    @IBAction func onSegmentedController(sender: UISegmentedControl) {
+        
+        
+
+        
+        // color it
+    }
+    
     @IBAction func onTapHamburger(sender: UIButton) {
-        println("Manu alpha is \(menuView.alpha)")
-        menuView.alpha = 1
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.scrollView.transform = CGAffineTransformMakeTranslation(280, 0)
-            self.navigationBar.transform = CGAffineTransformMakeTranslation(280, 0)
+            self.contentView.transform = CGAffineTransformMakeTranslation(280, 0)
         })
     }
     
@@ -116,10 +120,10 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             }, completion: nil)
     }
     
-    @IBAction func onEdgePan(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
-        
+    @IBAction func onEdgePanning(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
         menuView.alpha = 1
         
+        println("hello")
         var location = gestureRecognizer.locationInView(contentView)
         var translation = gestureRecognizer.translationInView(contentView)
         var velocity = gestureRecognizer.translationInView(contentView)
@@ -127,13 +131,15 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         if gestureRecognizer.state == UIGestureRecognizerState.Began {
             contentCenter = contentView.center
             println("panning from edge")     // ugh not working
-
+            
         } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
             println("panning changed")
         } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             
         }
+
     }
+
     
     @IBAction func onPanMessage(gestureRecognizer: UIPanGestureRecognizer) {
         
