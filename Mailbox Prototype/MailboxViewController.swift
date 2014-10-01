@@ -74,18 +74,17 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         
         println(sender.selectedSegmentIndex)
         
-        if (sender.selectedSegmentIndex == 0) {
-           segmentedController.tintColor = yellow
-        } else if (sender.selectedSegmentIndex == 1) {
-            segmentedController.tintColor == blue
-        } else if (sender.selectedSegmentIndex == 2) {
-            segmentedController.tintColor == green
+        switch(sender.selectedSegmentIndex)
+            {
+        case 0:
+            sender.tintColor = yellow
+        case 1:
+            sender.tintColor = blue
+        case 2:
+            sender.tintColor = green
+        default:
+            sender.tintColor = blue
         }
-        
-        
-        // only works for index 1 wtf?
-        
-        sender.setNeedsDisplay()
     }
     
     @IBAction func onTapHamburger(sender: UIButton) {
