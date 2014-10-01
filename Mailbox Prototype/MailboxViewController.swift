@@ -25,6 +25,7 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var laterView: UIImageView!
     @IBOutlet weak var listView: UIImageView!
     
+    @IBOutlet weak var segmentedController: UISegmentedControl!
 
     @IBOutlet weak var navigationBar: UIView!
     @IBOutlet weak var menuView: UIImageView!
@@ -40,8 +41,9 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     let green = UIColor(red: 0.38, green: 0.85, blue: 0.38, alpha: 1)
     let red = UIColor(red: 0.94, green: 0.33, blue: 0.05, alpha: 1)
     let gray = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+    let blue = UIColor(red: 0.34, green: 0.73, blue: 0.85, alpha: 1)
    
-    // Converts values (copypasta from Dropbox)
+    // Converts values (copypasta from Dropbox
     func convertValue(value: Float, r1Min: Float, r1Max: Float, r2Min: Float, r2Max: Float) -> Float {
         var ratio = (r2Max - r2Min) / (r1Max - r1Min)
         return value * ratio + r2Min - r1Min * ratio
@@ -57,6 +59,10 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         laterView.alpha = 0
         listView.alpha = 0
         
+        var gestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "onEdgePanning:")
+        gestureRecognizer.edges = UIRectEdge.Left
+        contentView.addGestureRecognizer(gestureRecognizer)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,10 +72,20 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
     
     @IBAction func onSegmentedController(sender: UISegmentedControl) {
         
+        println(sender.selectedSegmentIndex)
         
-
+        if (sender.selectedSegmentIndex == 0) {
+           segmentedController.tintColor = yellow
+        } else if (sender.selectedSegmentIndex == 1) {
+            segmentedController.tintColor == blue
+        } else if (sender.selectedSegmentIndex == 2) {
+            segmentedController.tintColor == green
+        }
         
-        // color it
+        
+        // only works for index 1 wtf?
+        
+        sender.setNeedsDisplay()
     }
     
     @IBAction func onTapHamburger(sender: UIButton) {
@@ -120,23 +136,44 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
             }, completion: nil)
     }
     
+  
+    
     @IBAction func onEdgePanning(gestureRecognizer: UIScreenEdgePanGestureRecognizer) {
+        
+        
         menuView.alpha = 1
         
-        println("hello")
         var location = gestureRecognizer.locationInView(contentView)
         var translation = gestureRecognizer.translationInView(contentView)
         var velocity = gestureRecognizer.translationInView(contentView)
         
-        if gestureRecognizer.state == UIGestureRecognizerState.Began {
-            contentCenter = contentView.center
-            println("panning from edge")     // ugh not working
+//        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+//            contentCenter = contentView.center
+//        } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
+//            if contentView.center.x < 160 {
+//                contentView.center.x = contentCenter + translation.x
+//            } else if contentView.center.x > 448 {
+//                contentView.center
+//            }
+//            
+//        } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+//
+//            // contentView.center = 160 @ pan
+//            // contentView.center = 300 @ panned
+//            
+//            UIView.ani
+//            UIView.animateWithDuration(0.3, animations: { () -> Void in
+//                if velocity.x > 0 {
+//                    contentView.center.x = 320*1.4
+//                } else {
+//                    self.contentView.center.x = 160
+//                    
+//                }
+//            })
+
             
-        } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
-            println("panning changed")
-        } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
             
-        }
+      //  }
 
     }
 
