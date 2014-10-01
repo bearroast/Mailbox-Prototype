@@ -147,33 +147,30 @@ class MailboxViewController: UIViewController, UIScrollViewDelegate {
         var translation = gestureRecognizer.translationInView(contentView)
         var velocity = gestureRecognizer.translationInView(contentView)
         
-//        if gestureRecognizer.state == UIGestureRecognizerState.Began {
-//            contentCenter = contentView.center
-//        } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
-//            if contentView.center.x < 160 {
-//                contentView.center.x = contentCenter + translation.x
-//            } else if contentView.center.x > 448 {
-//                contentView.center
-//            }
-//            
-//        } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
-//
-//            // contentView.center = 160 @ pan
-//            // contentView.center = 300 @ panned
-//            
-//            UIView.ani
-//            UIView.animateWithDuration(0.3, animations: { () -> Void in
-//                if velocity.x > 0 {
-//                    contentView.center.x = 320*1.4
-//                } else {
-//                    self.contentView.center.x = 160
-//                    
-//                }
-//            })
+        if gestureRecognizer.state == UIGestureRecognizerState.Began {
+            contentCenter = contentView.center
+        } else if gestureRecognizer.state == UIGestureRecognizerState.Changed {
+            if contentView.center.x >= 160 {
+                self.contentView.center.x = contentCenter.x + translation.x
+            } else {
+                contentView.center.x = 160
+            }
+            
+        } else if gestureRecognizer.state == UIGestureRecognizerState.Ended {
+
+            
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                if velocity.x > 0 {
+                    self.contentView.center.x = 448
+                } else {
+                    self.contentView.center.x = 160
+                    
+                }
+            })
 
             
             
-      //  }
+        }
 
     }
 
